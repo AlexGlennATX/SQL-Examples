@@ -6,23 +6,23 @@ Examples of my work in SQL for professional projects
 *Sessoinize data for the first time, to export to Sheets for secondary users
 
 ## Sessionize data for export
-WITH sessions AS (
+WITH sessions<br> AS (
   SELECT
 	user_id,
 	timestamp,
-	CASE
+	<br><br>CASE
   	WHEN EXTRACT(EPOCH FROM (timestamp - LAG(timestamp) OVER (PARTITION BY user_id ORDER BY timestamp))) > 900
   	OR LAG(timestamp) OVER (PARTITION BY user_id ORDER BY timestamp) IS NULL
-  	THEN 1
-  	ELSE 0
-	END AS new_session
-  FROM "Shopify"."wholesale_customers"
+  	<br>THEN 1
+  	<br>ELSE 0
+	<br>END AS new_session
+  <br>FROM "Shopify"."wholesale_customers"
 )
-SELECT
+<br>SELECT
   *,
-  SUM(new_session) OVER (PARTITION BY user_id ORDER BY timestamp) as session_id
-FROM sessions
-ORDER BY timestamp, user_id;
+  <br>SUM(new_session) OVER (PARTITION BY user_id ORDER BY timestamp) as session_id
+<br>FROM sessions
+<br>ORDER BY timestamp, user_id;
 
 
 ## Sessionize, count, visuzlize
