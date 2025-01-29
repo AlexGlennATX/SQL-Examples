@@ -26,8 +26,8 @@ WITH sessions<br> AS (
 
 
 ## Sessionize, count, visuzlize
-WITH sessions AS (
-  <br>SELECT
+WITH sessions <br>AS (
+  SELECT
 	user_id,
 	timestamp,
 	<br>CASE
