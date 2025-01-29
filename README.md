@@ -10,7 +10,7 @@ WITH sessions<br> AS (
   SELECT
 	user_id,
 	timestamp,
-	<br><br>CASE
+	<br>CASE
   	WHEN EXTRACT(EPOCH FROM (timestamp - LAG(timestamp) OVER (PARTITION BY user_id ORDER BY timestamp))) > 900
   	OR LAG(timestamp) OVER (PARTITION BY user_id ORDER BY timestamp) IS NULL
   	<br>THEN 1
